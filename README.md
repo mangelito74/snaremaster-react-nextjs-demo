@@ -1,1 +1,2 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# snaremaster-react-demo
+A fake snare drum store built in React
