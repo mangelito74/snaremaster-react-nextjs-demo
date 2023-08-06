@@ -1,0 +1,11 @@
+.details {
+  display: flex;
+}
+
+.details img {
+  width: 40%;
+}
+
+.details h1 {
+  text-align: center;
+}
