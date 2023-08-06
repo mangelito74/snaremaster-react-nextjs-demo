@@ -17,7 +17,13 @@ const HomePage = (props) => {
 };
 
 export async function getStaticProps(context) {
-  const response = await fetch("http://localhost:3000/api/products");
+  const environment = process.env.NEXT_JS_ENVIRONMENT;
+  const url =
+    environment === "development"
+      ? "http://localhost:3000/api/products"
+      : "https://snaremaster-react-demo.vercel.app/api/products";
+
+  const response = await fetch(url, { method: "GET" });
   const data = await response.json();
 
   return {

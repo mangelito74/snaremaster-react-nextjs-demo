@@ -21,7 +21,13 @@ const ProductDetailsPage = (props) => {
 };
 
 export async function getStaticPaths() {
-  const response = await fetch("http://localhost:3000/api/products");
+  const environment = process.env.NEXT_JS_ENVIRONMENT;
+  const url =
+    environment === "development"
+      ? "http://localhost:3000/api/products"
+      : "https://snaremaster-react-demo.vercel.app/api/products";
+  const response = await fetch(url, { method: "GET" });
+
   const data = await response.json();
   let products = data.map((product) => product.id);
 
@@ -36,9 +42,13 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const productId = context.params.productId;
 
-  const response = await fetch(
-    "http://localhost:3000/api/products/" + productId
-  );
+  const environment = process.env.NEXT_JS_ENVIRONMENT;
+  const url =
+    environment === "development"
+      ? "http://localhost:3000/api/products/" + productId
+      : "https://snaremaster-react-demo.vercel.app/api/products/" + productId;
+  const response = await fetch(url, { method: "GET" });
+
   const data = await response.json();
 
   return {
