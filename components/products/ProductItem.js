@@ -9,7 +9,7 @@ const ProductItem = (props) => {
 
   const addToCartHandler = () => {
     //TODO
-    alert("TODO: ADD to cart!");
+    alert("TODO: Add to cart!");
   };
 
   return (

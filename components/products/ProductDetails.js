@@ -3,6 +3,11 @@ import Card from "../ui/Card";
 import classes from "./ProductDetails.module.css";
 
 const ProductDetails = (props) => {
+  const addToCartHandler = () => {
+    //TODO
+    alert("TODO: Add to cart!");
+  };
+
   return (
     <Card>
       <div className={classes.details}>
@@ -13,6 +18,9 @@ const ProductDetails = (props) => {
           <p>
             <b>${props.price.toFixed(2)}</b>
           </p>
+          <div className={classes.actions}>
+            <button onClick={addToCartHandler}>Add to Cart</button>
+          </div>
         </div>
       </div>
     </Card>
