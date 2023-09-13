@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Card from "../ui/Card";
+import Card from "../UI/Card";
 
 import classes from "./ProductItem.module.css";
 
