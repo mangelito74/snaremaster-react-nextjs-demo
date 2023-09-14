@@ -9,6 +9,7 @@ const HomePage = (props) => {
       <Head>
         <title>SnareMaster</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <ProductList products={props.products} />
