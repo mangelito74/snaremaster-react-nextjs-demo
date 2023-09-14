@@ -1,4 +1,4 @@
-import Card from "../ui/Card";
+import Card from "../UI/Card";
 
 import classes from "./ProductDetails.module.css";
 
