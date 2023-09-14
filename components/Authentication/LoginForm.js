@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useState, useContext, Fragment } from "react";
 
-import Modal from "../UI/Modal";
-import Button from "../UI/Button";
+import ModalDialog from "../UI/ModalDialog";
 
 import AuthenticationContext from "../../store/authentication-context";
 
@@ -40,8 +39,7 @@ const LoginForm = (props) => {
     setPasswordIsValid(enteredPassword.trim().length > 6);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const loginHandler = () => {
     authenticationContext.onLogin(enteredEmail, enteredPassword);
   };
 
@@ -52,19 +50,26 @@ const LoginForm = (props) => {
   };
 
   return (
-    <Modal onClose={authenticationContext.hideLoginForm}>
-      <form onSubmit={submitHandler} className={classes.login}>
-        <h1>Login</h1>
-        <p className={classes.description}>
-          Use this dummy account to login:
-          <br />
-          <b>Email:</b> demo@demo.com
-          <br />
-          <b>Password:</b> demo123
-          <br />
-          <a onClick={autoFillHandler}>Click here to autofill!</a>
-        </p>
-        <div className={classes.control}>
+    <ModalDialog
+      isOpen={props.isOpen}
+      title="Login"
+      acceptButtonText="Login"
+      onAccept={loginHandler}
+      hasCancelButton={true}
+      formIsValid={formIsValid}
+      onClose={authenticationContext.hideLoginForm}
+    >
+      <div className={classes.info}>
+        Use this dummy account to login:
+        <br />
+        <b>Email:</b> demo@demo.com
+        <br />
+        <b>Password:</b> demo123
+        <br />
+        <a onClick={autoFillHandler}>Click here to autofill!</a>
+      </div>
+      <form className={classes.form}>
+        <div>
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -77,7 +82,7 @@ const LoginForm = (props) => {
             autoFocus
           />
         </div>
-        <div className={classes.control}>
+        <div>
           <label htmlFor="password">Password</label>
           <input
             id="password"
@@ -89,19 +94,8 @@ const LoginForm = (props) => {
             required
           />
         </div>
-        <div className={classes.actions}>
-          <button
-            className={classes.button}
-            onClick={authenticationContext.hideLoginForm}
-          >
-            Cancel
-          </button>
-          <Button type="submit" disabled={!formIsValid}>
-            Login
-          </Button>
-        </div>
       </form>
-    </Modal>
+    </ModalDialog>
   );
 };
 

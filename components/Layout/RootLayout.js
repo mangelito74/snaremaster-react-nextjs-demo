@@ -10,7 +10,7 @@ import classes from "./RootLayout.module.css";
 
 const RootLayout = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginFormIsShown, setLoginFormIsShown] = useState(false);
+  const [loginFormIsOpen, setLoginFormIsOpen] = useState(false);
 
   useEffect(() => {
     const storedUserLoggedInInformation = localStorage.getItem("isLoggedIn");
@@ -24,7 +24,7 @@ const RootLayout = (props) => {
     // But it's just a dummy/demo anyways
     localStorage.setItem("isLoggedIn", "1");
     setIsLoggedIn(true);
-    setLoginFormIsShown(false);
+    setLoginFormIsOpen(false);
   };
 
   const logoutHandler = () => {
@@ -33,11 +33,11 @@ const RootLayout = (props) => {
   };
 
   const showLoginFormHandler = () => {
-    setLoginFormIsShown(true);
+    setLoginFormIsOpen(true);
   };
 
   const hideLoginFormHandler = () => {
-    setLoginFormIsShown(false);
+    setLoginFormIsOpen(false);
   };
 
   return (
@@ -52,7 +52,7 @@ const RootLayout = (props) => {
     >
       <div id="overlays"></div>
       <div>
-        {loginFormIsShown && <LoginForm />}
+        {loginFormIsOpen && <LoginForm isOpen={loginFormIsOpen} />}
         <MainNavigation />
         <main className={classes.main}>{props.children}</main>
         <Footer />
