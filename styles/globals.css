@@ -36,3 +36,9 @@ button {
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
+
+@media screen and (max-width: 800px) {
+  #__next {
+    display: flex;
+  }
+}
