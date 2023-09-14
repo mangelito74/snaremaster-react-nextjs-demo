@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import LoginForm from "../authentication/LoginForm";
+import LoginForm from "../Authentication/LoginForm";
 import MainNavigation from "./MainNavigation";
 import Footer from "./Footer";
 

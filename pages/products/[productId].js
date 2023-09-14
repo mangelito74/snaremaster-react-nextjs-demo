@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
-import ProductDetails from "../../components/products/ProductDetails";
+import ProductDetails from "../../components/Products/ProductDetails";
 
 const ProductDetailsPage = (props) => {
   return (
