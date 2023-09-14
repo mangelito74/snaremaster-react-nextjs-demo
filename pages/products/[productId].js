@@ -4,10 +4,12 @@ import Head from "next/head";
 import ProductDetails from "../../components/Products/ProductDetails";
 
 const ProductDetailsPage = (props) => {
+  const title = "SnareMaster | " + props.product.name;
+  
   return (
     <Fragment>
       <Head>
-        <title>{props.product.name}</title>
+        <title>{title}</title>
         <meta name="description" content={props.product.description} />
       </Head>
       <ProductDetails

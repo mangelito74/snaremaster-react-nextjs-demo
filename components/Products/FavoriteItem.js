@@ -1,0 +1,44 @@
+import Link from "next/link";
+
+import classes from "./FavoriteItem.module.css";
+
+const FavoriteItem = (props) => {
+  const { id, name, description, image, price } = props;
+
+  const unFavoriteHandler = () => {
+    //TODO
+    alert("TODO: Un-favorite!");
+  };
+
+  const addToCartHandler = () => {
+    //TODO
+    alert("TODO: Add to cart!");
+  };
+
+  return (
+    <li className={classes.item}>
+      <div className={classes["favorites-container"]}>
+        <div className={classes["container"]}>
+          <Link href={"/products/" + id}>
+            <img src={image} alt={name} />
+          </Link>
+          <div className={classes.actions}>
+            <button onClick={unFavoriteHandler}>Un-favorite</button>
+          </div>
+        </div>
+        <Link href={"/products/" + id}>
+          <div className={classes["container"]}>
+            <h4>{name}</h4>
+            <div>{description}</div>
+            <b>${price.toFixed(2)}</b>
+          </div>
+        </Link>
+      </div>
+      <div className={classes.actions}>
+        <button onClick={addToCartHandler}>Add to Cart</button>
+      </div>
+    </li>
+  );
+};
+
+export default FavoriteItem;
