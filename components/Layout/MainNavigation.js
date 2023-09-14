@@ -2,14 +2,17 @@ import { Fragment, useState, useContext } from "react";
 import Link from "next/link";
 
 import Button from "../UI/Button";
+import ModalDialog from "../UI/ModalDialog";
+import MessageBox from "../UI/MessageBox";
 
 import AuthenticationContext from "../../store/authentication-context";
 
 import classes from "./MainNavigation.module.css";
-import ModalDialog from "../UI/ModalDialog";
 
 const MainNavigation = () => {
   const [logoutFormIsOpen, setLogoutFormIsOpen] = useState(false);
+  const [messageBoxIsOpen, setMessageBoxIsOpen] = useState(false);
+  const [message, setMessage] = useState(null);
 
   const authenticationContext = useContext(AuthenticationContext);
 
@@ -19,6 +22,12 @@ const MainNavigation = () => {
 
   const hideLogoutFormHandler = () => {
     setLogoutFormIsOpen(false);
+    setMessage("You are now logged out!");
+    setMessageBoxIsOpen(true);
+  };
+
+  const hideMessageBoxHandler = () => {
+    setMessageBoxIsOpen(false);
   };
 
   return (
@@ -62,7 +71,14 @@ const MainNavigation = () => {
           hasCancelButton={true}
           cancelButtonText="No"
           onClose={hideLogoutFormHandler}
-        >Do you really want to logout?</ModalDialog>
+        >
+          Do you really want to logout?
+        </ModalDialog>
+      )}
+      {messageBoxIsOpen && (
+        <MessageBox isOpen={messageBoxIsOpen} onClose={hideMessageBoxHandler}>
+          {message}
+        </MessageBox>
       )}
     </Fragment>
   );
