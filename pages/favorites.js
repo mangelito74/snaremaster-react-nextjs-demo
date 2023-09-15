@@ -1,9 +1,16 @@
 import { Fragment } from "react";
 import Head from "next/head";
 
-import FavoritesList from "../components/Products/FavoritesList"
+import { useStore } from "../store/custom-hooks/store";
+
+import FavoritesList from "../components/Products/FavoritesList";
 
 const FavoritesPage = (props) => {
+  const state = useStore()[0];
+  const favorites = props.products.filter(
+    (product) => state.favoriteIds.indexOf(product.id) >= 0
+  );
+
   const title = "SnareMaster | Favorites";
 
   return (
@@ -12,7 +19,7 @@ const FavoritesPage = (props) => {
         <title>{title}</title>
       </Head>
 
-      <FavoritesList favorites={props.favorites} />
+      <FavoritesList favorites={favorites} />
     </Fragment>
   );
 };
@@ -26,11 +33,10 @@ export async function getStaticProps(context) {
 
   const response = await fetch(url, { method: "GET" });
   const data = await response.json();
-  const favorites = data.filter((p) => p.favorite == true);
 
   return {
     props: {
-      favorites: favorites,
+      products: data,
     },
   };
 }

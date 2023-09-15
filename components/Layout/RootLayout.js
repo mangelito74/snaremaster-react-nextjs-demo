@@ -4,9 +4,12 @@ import LoginForm from "../Authentication/LoginForm";
 import MainNavigation from "./MainNavigation";
 import Footer from "./Footer";
 
-import AuthenticationContext from "../../store/authentication-context";
+import AuthenticationContext from "../../store/context-api/authentication-context";
+import configureFavoritesStore from "../../store/custom-hooks/favorite-ids-store";
 
 import classes from "./RootLayout.module.css";
+
+configureFavoritesStore();
 
 const RootLayout = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

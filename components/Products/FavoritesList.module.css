@@ -5,3 +5,8 @@
 .container h1 {
   margin-bottom: 1rem;
 }
+
+.placeholder {
+  margin: 4rem;
+  text-align: center;
+}

@@ -28,8 +28,8 @@ export async function getStaticPaths() {
     environment === "development"
       ? "http://localhost:3000/api/products"
       : "https://snaremaster-react-demo.vercel.app/api/products";
-  const response = await fetch(url, { method: "GET" });
 
+  const response = await fetch(url, { method: "GET" });
   const data = await response.json();
   let products = data.map((product) => product.id);
 

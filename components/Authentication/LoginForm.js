@@ -2,7 +2,7 @@ import { useState, useContext, Fragment } from "react";
 
 import ModalDialog from "../UI/ModalDialog";
 
-import AuthenticationContext from "../../store/authentication-context";
+import AuthenticationContext from "../../store/context-api/authentication-context";
 
 import classes from "./LoginForm.module.css";
 

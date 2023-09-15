@@ -1,13 +1,16 @@
 import Link from "next/link";
 
+import { useStore } from "../../store/custom-hooks/store";
+
 import classes from "./FavoriteItem.module.css";
 
 const FavoriteItem = (props) => {
   const { id, name, description, image, price } = props;
 
+  const dispatch = useStore(false)[1];
+
   const unFavoriteHandler = () => {
-    //TODO
-    alert("TODO: Un-favorite!");
+    dispatch("TOGGLE_FAVORITE", id);
   };
 
   const addToCartHandler = () => {

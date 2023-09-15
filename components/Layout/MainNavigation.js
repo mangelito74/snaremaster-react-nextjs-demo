@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import ModalDialog from "../UI/ModalDialog";
 import MessageBox from "../UI/MessageBox";
 
-import AuthenticationContext from "../../store/authentication-context";
+import AuthenticationContext from "../../store/context-api/authentication-context";
 
 import classes from "./MainNavigation.module.css";
 
